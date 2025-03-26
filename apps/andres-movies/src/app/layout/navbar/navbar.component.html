@@ -1,0 +1,20 @@
+<nav class="fixed top-0 z-50 w-full bg-gradient-to-b from-black to-transparent">
+    <div class="px-4 py-4 md:px-10">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center">
+                <!-- <img src="https://via.placeholder.com/150" alt="Movie app" class="h-8" /> -->
+                <div class="hidden ml-8 space-x-4 md:flex">
+                    <a [routerLink]="['/']" routerLinkActive="!text-netflix-red" [routerLinkActiveOptions]="{exact: true}" class="text-white transition-colors hover:text-netflix-gray">Home</a> <!-- Esto: [routerLinkActiveOptions]="{exact: true}" es para que cuando estamos en Movies y se pone rojo movie para que no se ponga tambien Home -->
+                    <a [routerLink]="['/movies']" routerLinkActive="!text-netflix-red" class="text-white transition-colors hover:text-netflix-gray">Movies</a>
+                    <a [routerLink]="['/my-list']" routerLinkActive="!text-netflix-red" class="text-white transition-colors hover:text-netflix-gray">My List</a>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <!-- Search Component -->
+                     <app-search />
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

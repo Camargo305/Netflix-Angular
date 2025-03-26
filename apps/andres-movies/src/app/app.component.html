@@ -1,2 +1,16 @@
-<app-nx-welcome></app-nx-welcome>
-<router-outlet></router-outlet>
+<div class="relative min-h-screen">
+    <app-navbar />
+    <main>
+        <app-hero [movie]="heroMovie()!" />
+        <div class="pb-20">
+            <router-outlet></router-outlet>
+        </div>
+    </main>
+    <button (click)="goTop()"
+        class="fixed p-3 text-white transition-all duration-300 rounded shadow-lg bg-netflix-red bottom-8 right-8 hover:bg-netflix-red-dark"
+        [class.opacity-0]="!showButton" [class.opacity-100]="showButton">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+        </svg>
+    </button>
+</div>

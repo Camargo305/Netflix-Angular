@@ -1,0 +1,12 @@
+<div class="relative search-container">
+    <input type="text" class="py-2 pl-4 text-white border border-gray-700 rounded-md w-80 bg-black/60 focus:outline-none focus:border-white" placeholder="Search for a movie" (input)="onSearchInput($event)" /> <!--Cada vez que esto cambie llamamos a onSearchInput-->
+    <ul class="absolute z-50 w-full mt-2 rounded-md shadow-lg search-results bg-black">
+        @for (movie of movies().slice(0, 10); track movie.id) {
+            <!-- El tabindex es para que no se queje y el keyup.center es para cuando le demos enter que tambien nos lleve a los detalles de la pelicula. -->
+            <li tabindex="0" (click)="goToDetails(movie.id)" (keyup.enter)="goToDetails(movie.id)" class="flex items-center p-2 rounded-md hover:bg-netflix-red/20 cursor-pointer">
+                <img [src]="getImage(movie.poster_path)" alt="{{movie.title}} poster" class="w-12 h-12 mr-2">
+                <span>{{movie.title}} - {{movie.release_date | date: 'yyyy'}}</span>
+            </li>
+        }
+    </ul>
+</div>

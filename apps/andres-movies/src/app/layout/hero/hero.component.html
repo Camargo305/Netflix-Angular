@@ -1,0 +1,26 @@
+@let movieData = movie();
+
+@if(movieData) {
+    <a [routerLink]="['/movies', movieData.id]" class="block relative h-[80vh] w-full">
+        <div class="relative h-full w-full">
+            <div class="absolute inset-0">
+                <img [src]="'http://image.tmdb.org/t/p/w500' + movieData.backdrop_path" alt="{{movieData.title}}" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent"></div>
+            </div>
+            
+            <!-- Contenedor con posición absoluta para que se ubique encima de la imagen -->
+            <div class="absolute top-10 mt-10 left-0 w-full px-4 md:px-16 lg:w-1/2">
+                <h1 class="text-3xl mb-10 font-bold text-white md:text-5xl">{{movieData.title}}</h1>
+                <p class="mb-8 text-lg text-white">{{movieData.overview}}</p>
+                <div class="flex space-x-4">
+                    <button class="px-8 py-2 text-black bg-white rounded hover:bg-white/90">
+                        ▶ Reproducir
+                    </button>
+                    <button class="px-8 py-2 text-white bg-gray-500/70 rounded hover:bg-gray-500/50">
+                        ℹ Más información
+                    </button>
+                </div>
+            </div>
+        </div>
+    </a>
+}

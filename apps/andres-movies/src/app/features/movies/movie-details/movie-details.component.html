@@ -1,0 +1,34 @@
+<div class="min-h-screen p-4 md:p-8">
+    <div class="max-w-4xl mx-auto mt-12">
+      <button (click)="goBack()" class="flex items-center gap-2 mb-8 transition-color text-netflix-red hover:text-netflix-red/80">
+        Go Back
+      </button>
+  
+      <div *ngIf="movie.hasValue()">
+        <div class="grid gap-8 mt-12 md:grid-cols-2">
+          <img [src]="'https://image.tmdb.org/t/p/w500' + movie.value()?.poster_path" [alt]="movie.value()?.title" class="w-full rounded-lg">
+          <div>
+            <h1 class="mb-4 text-4xl font-bold">
+              {{ movie.value()?.title }}
+            </h1>
+            <p class="mb-4 text-gray-300">{{ movie.value()?.overview }}</p>
+            <div class="space-y-2">
+              <p>
+                <span class="font-bold">Release Date: </span>
+                {{ movie.value()?.release_date | date }} /10
+              </p>
+              <p>
+                <span class="font-bold">Rating: </span>
+                {{ movie.value()?.vote_average | number: '1.1-1' }}
+              </p>
+              <button 
+                (click)="isFavorite(movie.value()) ? removeFromFavorites(movie.value()) : addToFavorites(movie.value())">
+                {{ isFavorite(movie.value()) ? '⭐' : '☆' }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
